@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking</title>
+    <link rel="stylesheet" href="{% static 'create.css' %}" />
+
+</head>
+
+<body>
+    <div id="viewport">
+        <!-- Sidebar -->
+        <div id="sidebar">
+            <header>
+                <a href="#">My App</a>
+            </header>
+            <ul class="nav">
+                <div class="mb-3">
+                        <label for="formGroupExampleInput" class="form-label">Search hotel name</label>
+                        <input type="text" class="form-control" id="myInput" placeholder="Input placeholder">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput" class="form-label">Search hotel type</label>
+                        <input type="text" class="form-control" id="myInput" placeholder="Input placeholder">
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="validationServer01" class="col-sm-3">Search hotel rating</label>
+                        <div class="col-sm-4">
+                            <select class="form-select" aria-label="select example">
+                                <option value="0">Select rating</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="row mb-3">
+                        <label for="validationServer01" class="col-sm-3">Search hotel location</label>
+                        <div class="col-sm-4">
+                            <select class="form-select" aria-label="select example">
+                                <option value="0">Select location</option>
+                                <option value="TN">TN</option>
+                                <option value="KERALA">KERALA</option>
+                                <option value="KA">KA</option>
+                            </select>
+                        </div>
+                    </div><br>
+
+                    <form method="get">
+                        {{myfilter}}
+                        <button type="submit" class="btn btn-primary">search</button>
+                    </form>
+
+            </ul>
+        </div>
+        <!-- Content -->
+        <div id="content">
+
+
+            <div class="container">
+                <h1>List of Hotels</h1>
+                <table style="border:5px solid #000;" width="100%;">
+                    <tbody>
+                        <thead>
+                            <tr>
+                                <th style="text-align:center">Hotel Name</th>
+                                <th style="text-align:center">Hotel Location</th>
+                                <th style="text-align:center">Hotel Description</th>
+                                <th style="text-align:center">Hotel Type</th>
+                                <th style="text-align:center">Hotel Image</th>
+                                <th style="text-align:center">Hotel Rating</th>
+                            </tr>
+                        </thead>
+                    </tbody>
+                    <tbody>
+                        {% for data in data_list %}
+                        <tr>
+                            <td style="text-align:center">{{data.hotel_name}}</td>
+                            <td style="text-align:center">{{data.hotel_location}}</td>
+                            <td style="text-align:center">{{data.hotel_description}}</td>
+                            <td style="text-align:center">{{data.hotel_type}}</td>
+                            <td style="text-align:center"><img src="{{data.hotel_image}}" width="75" height="50"></td>
+                            <td style="text-align:center">{{data.hotel_rating}}</td>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
+    </div>
+
+</body>
+
+</html>
